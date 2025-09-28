@@ -3,17 +3,18 @@ class PeerService {
     if (!this.peer) {
       this.peer = new RTCPeerConnection({
         iceServers: [
+          { urls: "stun:stun.l.google.com:19302" },
           {
-            urls: [
-              "stun:stun.l.google.com:19302",
-              "stun:global.stun.twilio.com:3478",
-            ],
-          },
-        ],
+            urls: "turn:turn.anyfirewall.com:443?transport=tcp",
+            username: "webrtc",
+            credential: "webrtc"
+          }
+        ]
       });
     }
   }
 
+  // "stun:global.stun.twilio.com:3478",
   async getAnswer(offer) {
     if (this.peer) {
       await this.peer.setRemoteDescription(offer);
