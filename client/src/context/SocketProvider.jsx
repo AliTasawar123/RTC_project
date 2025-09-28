@@ -10,7 +10,7 @@ export const useSocket = () => {
 };
 
 export const SocketProvider = (props) => {
-  const socket = useMemo(() => io("https://rtc-project.vercel.app/:8000"), []);
+  const socket = useMemo(() => io("https://rtc-project.vercel.app/"), []);
 
   return (
     <SocketContext.Provider value={socket}>
