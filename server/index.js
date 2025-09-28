@@ -1,7 +1,10 @@
 const { Server } = require("socket.io");
 
 const io = new Server(8000, {
-  cors: true,
+  cors: {
+    origin: "https://rtc-project-9yds.onrender.com/", // Replace with your frontend URL
+    methods: ["GET", "POST"], // Allowed HTTP methods
+  }
 });
 
 const emailToSocketIdMap = new Map();
